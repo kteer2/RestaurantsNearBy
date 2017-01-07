@@ -1,0 +1,60 @@
+
+<div id="list"  class="container top">
+    <div id="restaurant" class="row" ng-repeat="p in vm.restaurants | startFrom:(vm.currentPage - 1) * vm.pageSize | limitTo: vm.pageSize">
+        <div class="media">
+            <div class="right">
+                <a href="#">
+                    <img data-toggle="modal" data-target="#myModal" class="media-object" ng-src="{{vm.img1 + p.photos[0].photo_reference}}" alt="...">
+                </a>
+            </div>
+                        <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" >{{p.name}}
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div>Rating :{{p.rating}}</div>
+                            <span uib-rating ng-model="p.rating" max="5" read-only="true" aria-labelledby="default-rating"></span>
+                            <div>Address : {{p.vicinity}}</div>
+                            <p ><strong>Type</strong>:<br/>
+                                <span ng-if="p.types.restaurant == p.types.restaurant ">restaurant</span><br/>
+                                <span ng-if="p.types.food == p.types.food">food</span><br/>
+                                <span ng-if="p.types.establishment == p.types.establishment">establishment</span><br/>
+                                <span ng-if="p.types.point_of_interest == p.types.point_of_interest">point_of_interest</span><br/>
+                                <span ng-if="p.types.travel_agency== p.types.travel_agency">travel_agency</span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--model end-->
+            <div data-toggle="modal" data-target="#myModal" class="media-body">
+               <div>
+                   <my-name></my-name>
+               </div>
+               <my-address></my-address>
+                <br/><br/>
+                <p class="open-now"><strong>Open Now :</strong><span id="close" ng-if="!p.opening_hours.open_now && p.opening_hours.open_now!= null">  Closed</span>
+                    <span id="open" ng-if="p.opening_hours.open_now">Open</span>
+                    <span ng-if="p.opening_hours.open_now== null">N/A</span>
+                </p>
+                <p><strong>Rating</strong>:&nbsp;<span ng-if="p.rating"><span class="label label-success">{{p.rating}}</span> <span uib-rating ng-model="p.rating" max="5" read-only="true" aria-labelledby="default-rating"></span></span><span ng-if="p.rating== null">N/A</span></p>
+
+                <my-location></my-location>
+            </div>
+            <div class="text-center" ng-if="vm.restaurants.length<=0">
+                <h3>No Restaurants Found</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div  id = 'map'></div>
+<div class="right" ng-show="vm.restaurants.length>4">
+    <ul id="page" uib-pagination total-items="vm.restaurants.length" ng-model="vm.currentPage" items-per-page="vm.pageSize"></ul>
+</div>
