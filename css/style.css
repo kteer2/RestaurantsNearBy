@@ -15,29 +15,29 @@ my-name{
     text-decoration: double;
     font-size: large;
     font-style: inherit;
-    /*color: greenyellow;*/
+    color: greenyellow;
 
 }
-/*my-address,my-location{*/
-    /*font-size: medium;*/
-/*}*/
-/*#open{*/
-    /*color: greenyellow;*/
-    /*font-size: medium;*/
-/*}*/
-/*#close{*/
-    /*color: yellow;*/
-    /*font-size: medium;*/
+my-address,my-location{
+    font-size: medium;
+}
+#open{
+    color: greenyellow;
+    font-size: medium;
+}
+#close{
+    color: yellow;
+    font-size: medium;
 
-    /*}*/
-/*#map, #map-canvas {*/
-    /*height: 700px;*/
-    /*width: 50%;*/
-    /*float: right;*/
-    /*padding-right: 15%;*/
-    /*padding-left: 5%;*/
-    /*background-color: grey;*/
-/*}*/
+    }
+#map, #map-canvas {
+    height: 700px;
+    width: 50%;
+    float: right;
+    padding-right: 15%;
+    padding-left: 5%;
+    background-color: grey;
+}
 #page{
     float: none;
     padding-right: 5%;
@@ -56,7 +56,7 @@ a:link {
 #forks{
 
   height: 3%;
-    width: 3%;
+  width: 3%;
 
 }
 h1{
